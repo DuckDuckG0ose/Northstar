@@ -1,0 +1,33 @@
+Make:
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\SystemRestore" /v "SystemRestorePointCreationFrequency" /t REG_DWORD /d 0 /f >nul 2>&1
+powershell -ExecutionPolicy Unrestricted -NoProfile Enable-ComputerRestore -Drive 'C:\', 'D:\', 'E:\', 'F:\', 'G:\' >nul 2>&1
+wmic.exe /namespace:\\root\default Path SystemRestore Call CreateRestorePoint "Hone Restore Point", 100, 7
+
+Restore:
+wmic.exe /Namespace:\\root\default Path SystemRestore get SequenceNumber, Description, CreationTime
+wmic.exe /Namespace:\\root\default Path SystemRestore Call Restore "secnum"
+
+
+try:
+        print(crayons.red("                                                                                    [0.] EXIT         [9.] BACK"))
+        action = int(input(crayons.green("                                                                   What action would you like to perform: ")))
+
+
+        if action == 0:
+            print("Exiting...")
+            time.sleep(3)
+            break  # Exit the loop and end the program
+
+        elif action == 1:
+            softreboot()
+
+        elif 2:
+            print("seems fine")
+
+        else:
+            print(crayons.red("Hmmm, seems like that action was invalid."))
+            countdown_timer(15)
+    
+    except ValueError:
+        print(crayons.red("Please use numbers only."))
+        countdown_timer(4)
