@@ -7,27 +7,12 @@ import sys
 import ctypes
 from honesponsor import sponsor
 from softreboot import softreboot
-
-def run_another_script(script_filename):
-    try:
-        # Example command to run the script using the current Python interpreter.
-        command = [sys.executable, script_filename]
-
-        # Run the subprocess and wait for it to finish.
-        result = subprocess.run(command, capture_output=True, text=True)
-
-        # Check the return code and handle any errors if necessary.
-        if result.returncode == 0:
-            print("System Checks ready... Resuming...")
-        else:
-            print("Subprocess encountered an error.")
-            print("Error output:")
-            print(result.stderr)
-    except Exception as e:
-        print(f"Error while running the subprocess: {e}")
+from restorepoint import display_menu, main_menu
 
 
 os.system("title PerfCTRL - When your preformance falls, We rise.")
+
+
 def logo():
     os.system("cls")
     f = open('logo.txt', 'r')
@@ -51,6 +36,7 @@ def countdown_timer(seconds):
     sys.stdout.write("\r" + " " * 20 + "\r")
     sys.stdout.flush()
 
+
 os.system("cls")
 logo_red()
 print(crayons.red(f"""
@@ -73,8 +59,8 @@ def selectionmenu():
 
         print(f'\n \n')
         print(crayons.blue("                         [1.] SoftReboot                                                  [2.] Restore Point Center"))
-        print("                         Use this if your pc has been                                                   ")
-        print("                         running for a while and you want a boost                                                  ")
+        print("                         Use this if your pc has been                                                   Need to vreate or restore to a restore point?")
+        print("                         running for a while and you want a boost                                                  Use this!")
         print(f'\n \n')
         print(f'\n \n')
         try:
@@ -91,7 +77,8 @@ def selectionmenu():
                 softreboot()
 
             elif 2:
-                print("seems fine")
+                display_menu()
+                main_menu()
 
             else:
                 print(crayons.red("Hmmm, seems like that action was invalid."))
