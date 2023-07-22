@@ -14,10 +14,10 @@ Insert gif or link to demo
 
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Softreboot, for when your pc has been running for a while...
+- Restore points, so you can do stuff you shouldnt...
+- Easy-to-use UI
+- Dveloped with love <3
 
 
 ## Support
@@ -27,6 +27,6 @@ If you have an questions or issues I would love to help you. Email me at visualv
 
 ## Installation
 
-It comes in a .exe file that you launch. A command prompt will pop up and will guide you trough the instalation. 
+It comes in a .exe file that you launch. A command prompt will pop up and will guide you trough the installation. 
 
     

@@ -2,6 +2,7 @@ import crayons
 import subprocess
 import os
 
+
 def create_restore_point(name, restore_type=7):
     try:
         command = f'wmic.exe /namespace:\\\\root\\default Path SystemRestore Call CreateRestorePoint "{name}", 100, {restore_type}'
@@ -18,17 +19,23 @@ def restore_to_restore_point(restore_point_sequence_number):
     except subprocess.CalledProcessError:
         return False
 
-def check_restore_point():
+def list_restore_points():
     try:
-        command = 'wmic.exe /Namespace:\\\\root\\default Path SystemRestore get SequenceNumber'
+        command = 'wmic.exe /Namespace:\\\\root\\default Path SystemRestore get SequenceNumber,Description'
         result = subprocess.run(command, shell=True, capture_output=True, text=True)
         output = result.stdout.strip()
+
         if "SequenceNumber" in output:
-            print(crayons.green("An existing restore point is already found."))
+            print(crayons.green("Existing restore points:"))
+            lines = output.splitlines()
+            for line in lines[1:]:
+                sequence_number, description = line.strip().split(None, 1)
+                print(f"{crayons.green('Sequence Number:')} {sequence_number}, {crayons.green('Description:')} {description}")
         else:
             print(crayons.red("No restore point available."))
     except subprocess.CalledProcessError:
         print(crayons.red("Error occurred while checking restore points."))
+
 
 def display_menu():
     print(crayons.green("""
@@ -41,7 +48,7 @@ def display_menu():
 """))
     print(crayons.blue("                      [1.] Create                                          [2.] Restore"))
     print("                                                      [0.] Exit")
-    check_restore_point()
+    list_restore_points()
     print("\n")
 
 def create_restore_point_menu():
@@ -51,13 +58,14 @@ def create_restore_point_menu():
     print(crayons.green("Restore point created successfully."))
 
 def restore_menu():
-    check_restore_point()
+    list_restore_points()
     value = input(crayons.green("Enter the desired restore point's ID: "))
     print("Restoring...")
     restore_to_restore_point(value)
     print(crayons.green("System restored successfully."))
 
 def main_menu():
+    
     while True:
         os.system("cls" if os.name == "nt" else "clear")
         display_menu()
@@ -68,6 +76,10 @@ def main_menu():
                 create_restore_point_menu()
             elif rp_action == 2:
                 restore_menu()
+            elif rp_action == 0:
+                from Main import selectionmenu
+                selectionmenu()
+                break
             else:
                 print(crayons.red("Invalid option. Please choose from the available options."))
 
