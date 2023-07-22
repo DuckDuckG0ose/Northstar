@@ -31,3 +31,5 @@ try:
     except ValueError:
         print(crayons.red("Please use numbers only."))
         countdown_timer(4)
+
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Discord.exe" /v "UseLargePages" /t REG_DWORD /d "1" /f 

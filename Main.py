@@ -8,8 +8,9 @@ import ctypes
 from honesponsor import sponsor
 from softreboot import softreboot
 from restorepoint import display_menu, main_menu
-from modules import maximize_command_prompt
+from modules import maximize_command_prompt, boostdiscord, webbrowser
 import json
+from powerplan import powerplan
 
 
 os.system("title PerfCTRL - When your preformance falls, We rise.")
@@ -75,9 +76,12 @@ def selectionmenu():
         print("                         Use this if your pc has been                                                   Need to create or restore to a restore point?")
         print("                         running for a while and you want a boost                                                  Use this!")
         print(f'\n \n')
+        print(crayons.blue("                         [3.] Powerplan                                                  [4.] Boost Discord"))
+        print("                         Not reccomended using on a laptop                                                   Using this tweak makes your Discord")
+        print("                         Boosts your pc's preformance by using out custom power plan                               client use less resources and goes brrrr")
         print(f'\n \n')
         try:
-            print(crayons.red("                                                                                    [0.] EXIT         [9.] BACK"))
+            print(crayons.red("                                                                                    [0.] EXIT         [9.] BACK         [10.] DISCORD"))
             action = int(input(crayons.green("                                                                   What action would you like to perform: ")))
 
             if action == 0:
@@ -93,7 +97,17 @@ def selectionmenu():
                 display_menu()
                 main_menu()
                 break
-
+            elif action == 3:
+                powerplan()
+                print(crayons.green("Power Plan applied."))
+                countdown_timer(5)
+            elif action == 4:
+                boostdiscord()
+                print(crayons.green("I boosted Discord"))
+                countdown_timer(5)
+            elif action == 10:
+                    discord_url = "https://discord.gg/GkhwF53JbF"
+                    os.system(f'start {discord_url}')
             else:
                 print(crayons.red("Hmmm, seems like that action was invalid."))
                 countdown_timer(5)
@@ -104,31 +118,27 @@ def selectionmenu():
 
 
 
-def checkjson(file_path):
-    try:
-        with open(file_path, 'r+') as file:
-            try:
-                data = json.load(file)
-            except json.JSONDecodeError:
-                # If the JSON file is empty or invalid, initialize with a default value
-                data = {'first_launch': False}
+def firstlaunch():
+    # Read the content of the config.json file
+    with open('config.json', 'r') as file:
+        config_data = json.load(file)
 
-            first_launch = data.get('first_launch', False)
+    # Check the value of the first_launch key
+    first_launch = config_data.get('first_launch', False)
 
-            if first_launch:
-                    # If value is True, call the menu() function
-                warningmenu()
-                    # Set the value to False and write it back to the JSON file
-                data['first_launch'] = False
-                file.seek(0)
-                json.dump(data, file, indent=4)
-                file.truncate()
-            else:
-                selectionmenu()
-                # If value is False, skip the menu() function and continue with code
-    except (FileNotFoundError, IOError) as e:
-        print(f"Error while handling JSON file: {str(e)}")
+    print(f"First Launch: {first_launch}")
 
+    # Call the appropriate function based on the first_launch value
+    if first_launch:
+        # After showing the warning menu, update the first_launch value to False
+        config_data['first_launch'] = False
+        # Write the updated data back to the config.json file
+        with open('config.json', 'w') as file:
+            json.dump(config_data, file, indent=4)
+        print("Updated 'first_launch' to False")
+        warningmenu()
 
-file_path = "config.json"
-checkjson(file_path)
+    else:
+        selectionmenu()
+
+firstlaunch()
