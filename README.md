@@ -17,7 +17,7 @@ Insert gif or link to demo
 - Softreboot, for when your pc has been running for a while...
 - Restore points, so you can do stuff you shouldnt...
 - Easy-to-use UI
-- Dveloped with love <3
+- Developed with love <3
 
 
 ## Support
