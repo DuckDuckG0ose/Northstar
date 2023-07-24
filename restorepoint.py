@@ -47,7 +47,7 @@ def display_menu():
                   ╚═╝░░╚═╝╚══════╝╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝  ╚═╝░░░░░░╚════╝░╚═╝╚═╝░░╚══╝░░░╚═╝░░░
 """))
     print(crayons.blue("                      [1.] Create                                          [2.] Restore"))
-    print("                                                      [0.] Exit")
+    print("                                                      [0.] Back")
     list_restore_points()
     print("\n")
 

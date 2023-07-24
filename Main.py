@@ -5,15 +5,17 @@ from time import sleep
 import os
 import sys
 import ctypes
+import shutil
 from honesponsor import sponsor
 from softreboot import softreboot
 from restorepoint import display_menu, main_menu
-from modules import maximize_command_prompt, boostdiscord, webbrowser
+from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew
 import json
+from debloat import debloat
 from powerplan import powerplan
 
 
-os.system("title PerfCTRL - When your preformance falls, We rise.")
+os.system("title Frontier - When your preformance falls, We rise.")
 maximize_command_prompt()
 
 
@@ -22,7 +24,7 @@ def logo():
     f = open('logo.txt', 'r')
     print(crayons.yellow(f.read()))
     f.close()
-    print(crayons.blue("                                                       Welcome to "), crayons.green("PerfCTRL"), crayons.blue(". When your friends call out your aim and you blame it on your fps..."))
+    print(crayons.blue("                                                                Welcome to "), crayons.green("Fronteir"), crayons.blue(". When your friends call out your aim and you blame it on your fps..."))
 
 def logo_red():
     os.system("cls")
@@ -56,7 +58,7 @@ def warningmenu():
     ░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝
 
 
-    WE ARE NOT RESPONSIABLE FOR ANY DAMAGES DONE TO YOUR MACHINE. WE STRONGLY SUGGEST ON MAKING A RESTORE POINT. PERFCTRL IS STILL NOT PERFECT AND WE DONT HAVE A AUTOMATIC RESTORE POINT SYSTEM IN PLACE. \n THIS PROGRAM CANT KNOW IF ITS BEING RUN AS AN ADMIN OR NOT. IF YOU ARE NOT RUNNING IT AS AN AMIN IT MAY HAVE A CHANCE OF BRICKING YOUR SYSTEM.
+    WE ARE NOT RESPONSIABLE FOR ANY DAMAGES DONE TO YOUR MACHINE. WE STRONGLY SUGGEST ON MAKING A RESTORE POINT. FRONTIER IS STILL NOT PERFECT AND WE DONT HAVE A AUTOMATIC RESTORE POINT SYSTEM IN PLACE. \n THIS PROGRAM CANT KNOW IF ITS BEING RUN AS AN ADMIN OR NOT. IF YOU ARE NOT RUNNING IT AS AN AMIN IT MAY HAVE A CHANCE OF BRICKING YOUR SYSTEM.
     """))
     countdown_timer(9)
     selectionmenu()
@@ -72,17 +74,17 @@ def selectionmenu():
         logo()
 
         print(f'\n \n')
-        print(crayons.blue("                         [1.] SoftReboot                                                  [2.] Restore Point Center"))
-        print("                         Use this if your pc has been                                                   Need to create or restore to a restore point?")
-        print("                         running for a while and you want a boost                                                  Use this!")
+        print(crayons.blue("                         [1.] SoftReboot                                                  [2.] Restore Point Center                                             [3.] Debloat"))
+        print("                         Use this if your pc has been                                     Need to create or restore to a restore point?                         Removes bloatware from your PC")
+        print("                         running for a while and you want a boost                         Use this!                                                             In order to speed it up")
         print(f'\n \n')
-        print(crayons.blue("                         [3.] Powerplan                                                  [4.] Boost Discord"))
-        print("                         Not reccomended using on a laptop                                                   Using this tweak makes your Discord")
-        print("                         Boosts your pc's preformance by using out custom power plan                               client use less resources and goes brrrr")
+        print(crayons.blue("                         [4.] Powerplan                                                   [5.] Boost Discord                                                    [6.]Renew your IP"))
+        print("                         Not reccomended using on a laptop                                Using this tweak makes your Discord                                   Most internet problems come from")
+        print("                         Boosts your pc's preformance by using out custom power plan      client use less resources and goes brrrr                              a old ip. Renew it now.")
         print(f'\n \n')
         try:
-            print(crayons.red("                                                                                    [0.] EXIT         [9.] BACK         [10.] DISCORD"))
-            action = int(input(crayons.green("                                                                   What action would you like to perform: ")))
+            print(crayons.red("                                                                                       [0.] EXIT         [9.] BACK         [10.] DISCORD"))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
                 print("Exiting...")
@@ -98,13 +100,17 @@ def selectionmenu():
                 main_menu()
                 break
             elif action == 3:
+                debloat()
+            elif action == 4:
                 powerplan()
                 print(crayons.green("Power Plan applied."))
                 countdown_timer(5)
-            elif action == 4:
+            elif action == 5:
                 boostdiscord()
                 print(crayons.green("I boosted Discord"))
                 countdown_timer(5)
+            elif action == 6:
+                iprenew()
             elif action == 10:
                     discord_url = "https://discord.gg/GkhwF53JbF"
                     os.system(f'start {discord_url}')

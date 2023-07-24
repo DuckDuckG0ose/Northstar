@@ -1,5 +1,5 @@
 
-![Logo](https://i.imgur.com/KC7jW87.png)
+![Logo](https://i.imgur.com/dNwR4F6.png)
 
 
 # PerfCTRL
