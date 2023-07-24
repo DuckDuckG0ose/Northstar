@@ -9,7 +9,7 @@ import shutil
 from honesponsor import sponsor
 from softreboot import softreboot
 from restorepoint import display_menu, main_menu
-from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew
+from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall
 import json
 from debloat import debloat
 from powerplan import powerplan
@@ -18,13 +18,35 @@ from powerplan import powerplan
 os.system("title Frontier - When your preformance falls, We rise.")
 maximize_command_prompt()
 
+import subprocess
+
+def uninstall_edge():
+    # Change the path to the Edge installer directory according to your system
+    edge_installer_path = r'%PROGRAMFILES(X86)%\Microsoft\Edge\Application\xxx\Installer'
+    cmd1 = f'cd "{edge_installer_path}"'
+    cmd2 = 'setup.exe –uninstall –system-level –verbose-logging –force-uninstall'
+
+    try:
+        # Run the first command to change the directory
+        subprocess.run(cmd1, shell=True, check=True)
+        # Run the second command to uninstall Edge
+        subprocess.run(cmd2, shell=True, check=True)
+        print("Microsoft Edge has been uninstalled successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while running the command: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Call the function to execute the commands
+uninstall_edge()
+
 
 def logo():
     os.system("cls")
     f = open('logo.txt', 'r')
     print(crayons.yellow(f.read()))
     f.close()
-    print(crayons.blue("                                                                Welcome to "), crayons.green("Fronteir"), crayons.blue(". When your friends call out your aim and you blame it on your fps..."))
+    print(crayons.blue("                                                                Welcome to "), crayons.green("Frontier"), crayons.blue(". When your friends call out your aim and you blame it on your fps..."))
 
 def logo_red():
     os.system("cls")
@@ -63,9 +85,38 @@ def warningmenu():
     countdown_timer(9)
     selectionmenu()
 
+def secondpage():
+    while True:
+        os.system("cls")
+        logo()
+#                                       .             /                                                 .                  /                                                  .                 /
+        print(f'\n \n')
+        print(crayons.cyan("                         [1.] Uninstall Edge                                                  [2.] Restore Point Center                                             [3.] Debloat"))
+        print("                         Its useless basically                                           Need to create or restore to a restore point?                         Removes bloatware from your PC")
+        print("                         Might aswell uninstall it                                       Use this!                                                             In order to speed it up")
+        print(f'\n \n')
+        try:
+            print(crayons.magenta("                                                                             [0.] EXIT       [99.] DISCORD   |    [10.] Page 1"))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
+            if action == 0:
+                print("Exiting...")
+                time.sleep(3)
+                sys.exit()  # Exit the loop and end the program
 
-
+            elif action == 1:
+                uninstall_edge()
+                
+                
+            elif action == 99:
+                    discord_url = "https://discord.gg/GkhwF53JbF"
+                    os.system(f'start {discord_url}')
+            else:
+                print(crayons.red("Hmmm, seems like that action was invalid."))
+                countdown_timer(5)
+        except ValueError:
+            print(crayons.red("Please use numbers only."))
+            countdown_timer(4)
 
 
 def selectionmenu():
@@ -74,16 +125,19 @@ def selectionmenu():
         logo()
 
         print(f'\n \n')
-        print(crayons.blue("                         [1.] SoftReboot                                                  [2.] Restore Point Center                                             [3.] Debloat"))
+        print(crayons.cyan("                         [1.] SoftReboot                                                  [2.] Restore Point Center                                             [3.] Debloat"))
         print("                         Use this if your pc has been                                     Need to create or restore to a restore point?                         Removes bloatware from your PC")
         print("                         running for a while and you want a boost                         Use this!                                                             In order to speed it up")
         print(f'\n \n')
-        print(crayons.blue("                         [4.] Powerplan                                                   [5.] Boost Discord                                                    [6.]Renew your IP"))
+        print(crayons.cyan("                         [4.] Powerplan                                                   [5.] Boost Discord                                                    [6.]Renew your IP"))
         print("                         Not reccomended using on a laptop                                Using this tweak makes your Discord                                   Most internet problems come from")
-        print("                         Boosts your pc's preformance by using out custom power plan      client use less resources and goes brrrr                              a old ip. Renew it now.")
+        print("                         Boosts your pc's preformance by using our custom power plan      client use less resources and goes brrrr                              a old ip. Renew it now.")
         print(f'\n \n')
+        print(crayons.cyan("                         [7.] DNS flush                                                   [8.] Spicetify                                                       [9.]Uninstall MS store"))
+        print("                         Flush your DNS configuration                                     Installs a modded version of spotify                                   The most annoying bloatware on windows")
+        print("                         Could boost browser speeds.                                      that allows you to block ads & etc.                                    Just uninstall it. Its useless.")
         try:
-            print(crayons.red("                                                                                       [0.] EXIT         [9.] BACK         [10.] DISCORD"))
+            print(crayons.magenta("                                                                             [0.] EXIT       [99.] DISCORD   |   [10.] Page 2"))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
@@ -111,7 +165,16 @@ def selectionmenu():
                 countdown_timer(5)
             elif action == 6:
                 iprenew()
+            elif action == 7:
+                os.system("ipconfig /flushdns")
+            elif action == 8:
+                spicetify()
+            elif action == 9:
+                mssuninstall()
             elif action == 10:
+                secondpage()
+                break
+            elif action == 99:
                     discord_url = "https://discord.gg/GkhwF53JbF"
                     os.system(f'start {discord_url}')
             else:

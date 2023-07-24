@@ -2,7 +2,7 @@
 ![Logo](https://i.imgur.com/dNwR4F6.png)
 
 
-# PerfCTRL
+# Frontier
 
 When your performance fails you, we come in clutch. Coming with 20+ tweaks to boost your pc performance both inside and outside of games.
 
