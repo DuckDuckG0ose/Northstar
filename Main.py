@@ -10,21 +10,58 @@ from honesponsor import sponsor
 from softreboot import softreboot
 from restorepoint import display_menu, main_menu
 from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall
+from modules import defrag
 import json
 from debloat import debloat
 from powerplan import powerplan
+from TimerResolution import timerr
 
 
 os.system("title Frontier - When your preformance falls, We rise.")
 maximize_command_prompt()
 
-import subprocess
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+def check_admin():
+    if is_admin():
+        firstlaunch()
+    else:
+        noadmin()
+
+def noadmin():
+    os.system("cls")
+    print(crayons.red('''
+
+███╗░░██╗░█████╗░  ░█████╗░██████╗░███╗░░░███╗██╗███╗░░██╗
+████╗░██║██╔══██╗  ██╔══██╗██╔══██╗████╗░████║██║████╗░██║
+██╔██╗██║██║░░██║  ███████║██║░░██║██╔████╔██║██║██╔██╗██║
+██║╚████║██║░░██║  ██╔══██║██║░░██║██║╚██╔╝██║██║██║╚████║
+██║░╚███║╚█████╔╝  ██║░░██║██████╔╝██║░╚═╝░██║██║██║░╚███║
+╚═╝░░╚══╝░╚════╝░  ╚═╝░░╚═╝╚═════╝░╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝
+
+██████╗░███████╗██████╗░███╗░░░███╗██╗░██████╗░██████╗██╗░█████╗░███╗░░██╗░██████╗
+██╔══██╗██╔════╝██╔══██╗████╗░████║██║██╔════╝██╔════╝██║██╔══██╗████╗░██║██╔════╝
+██████╔╝█████╗░░██████╔╝██╔████╔██║██║╚█████╗░╚█████╗░██║██║░░██║██╔██╗██║╚█████╗░
+██╔═══╝░██╔══╝░░██╔══██╗██║╚██╔╝██║██║░╚═══██╗░╚═══██╗██║██║░░██║██║╚████║░╚═══██╗
+██║░░░░░███████╗██║░░██║██║░╚═╝░██║██║██████╔╝██████╔╝██║╚█████╔╝██║░╚███║██████╔╝
+╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝╚═════╝░╚═════╝░╚═╝░╚════╝░╚═╝░░╚══╝╚═════╝░
+
+
+Hey there! We are sorry, but you are not running the script with admin permissions. 
+We truly don't want to brick your pc. That's why we are asking you to relaunch the script
+with admin permissions. Thank you.
+'''))
+    input("Press enter to exit...")
 
 def uninstall_edge():
     # Change the path to the Edge installer directory according to your system
     edge_installer_path = r'%PROGRAMFILES(X86)%\Microsoft\Edge\Application\xxx\Installer'
     cmd1 = f'cd "{edge_installer_path}"'
-    cmd2 = 'setup.exe –uninstall –system-level –verbose-logging –force-uninstall'
+    cmd2 = 'setup.exe -uninstall -system-level -verbose-logging -force-uninstall'
 
     try:
         # Run the first command to change the directory
@@ -37,9 +74,7 @@ def uninstall_edge():
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Call the function to execute the commands
-uninstall_edge()
-
+    
 
 def logo():
     os.system("cls")
@@ -91,23 +126,31 @@ def secondpage():
         logo()
 #                                       .             /                                                 .                  /                                                  .                 /
         print(f'\n \n')
-        print(crayons.cyan("                         [1.] Uninstall Edge                                                  [2.] Restore Point Center                                             [3.] Debloat"))
-        print("                         Its useless basically                                           Need to create or restore to a restore point?                         Removes bloatware from your PC")
-        print("                         Might aswell uninstall it                                       Use this!                                                             In order to speed it up")
+        print(crayons.cyan("                         [1.] Uninstall Edge                                             [2.] Defrag Disk                                                      [3.] Timer Resolution"))
+        print("                         Its useless basically                                           Computer crashing? Use this option to try                             Sets your CPU Timer Rsolution")
+        print("                         Might aswell uninstall it                                       and fix the corrupted stuff inside your C: drive                      to a custom value to boost the speed")
         print(f'\n \n')
+        print()
         try:
-            print(crayons.magenta("                                                                             [0.] EXIT       [99.] DISCORD   |    [10.] Page 1"))
+            print(crayons.magenta("                                                                                          [99.] DISCORD   |    [10.] Page 1 [11.] Page 3"))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
                 print("Exiting...")
-                time.sleep(3)
                 sys.exit()  # Exit the loop and end the program
 
             elif action == 1:
                 uninstall_edge()
-                
-                
+            
+            elif action == 2:
+                defrag()
+            
+            elif action == 3:
+                timerr()
+
+            elif action == 10:
+                selectionmenu()
+                break
             elif action == 99:
                     discord_url = "https://discord.gg/GkhwF53JbF"
                     os.system(f'start {discord_url}')
@@ -136,13 +179,13 @@ def selectionmenu():
         print(crayons.cyan("                         [7.] DNS flush                                                   [8.] Spicetify                                                       [9.]Uninstall MS store"))
         print("                         Flush your DNS configuration                                     Installs a modded version of spotify                                   The most annoying bloatware on windows")
         print("                         Could boost browser speeds.                                      that allows you to block ads & etc.                                    Just uninstall it. Its useless.")
+        print("\n \n")
         try:
-            print(crayons.magenta("                                                                             [0.] EXIT       [99.] DISCORD   |   [10.] Page 2"))
+            print(crayons.magenta("                                                                                          [0.] EXIT       [99.] DISCORD   |   [10.] Page 2"))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
                 print("Exiting...")
-                time.sleep(3)
                 sys.exit()  # Exit the loop and end the program
 
             elif action == 1:
@@ -210,4 +253,4 @@ def firstlaunch():
     else:
         selectionmenu()
 
-firstlaunch()
+check_admin()
