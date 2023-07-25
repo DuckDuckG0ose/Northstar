@@ -46,6 +46,7 @@ It comes in a .exe file that you launch. A command prompt will pop up and will g
 - [ ] Make an installer
 - [ ] Make a functioning restore point system
 - [ ] Make a compiled version
+- [ ] Make a version checking feature
 - [x] Add timer resolution
 
     
