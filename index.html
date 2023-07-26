@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Webpage</title>
+  <style>
+    body {
+      background-image: url("Capture.PNG");
+      background-repeat: no-repeat;
+      background-size: cover; /* Resize image to cover the entire background */
+      background-position: left bottom;
+      color: #fff;
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .description {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px; /* Adjust the width as needed */
+      height: auto; /* Maintain aspect ratio */
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .download-button {
+      background: radial-gradient(circle, #00ff00, #0000ff);
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .redirect-button {
+      background-color: #ff0;
+      color: #000;
+      font-size: 18px;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .redirect-button:hover {
+      background-color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.imgur.com/dNwR4F6.png" alt="Logo" class="logo">
+    <h1>Frontier</h1>
+    <p class="description">Top of the line PC optimization software. Unleash the Power Within.</p>
+    <a href="https://github.com/VisualDeVenture/Frontier/releases" class="download-button">Download</a>
+    <a href="https://discord.gg/GkhwF53JbF" class="redirect-button">Discord</a>
+  </div>
+</body>
+</html>
