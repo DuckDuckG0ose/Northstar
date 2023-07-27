@@ -36,7 +36,9 @@ If you have an questions or issues I would love to help you. Email me at visualv
 ## Installation
 
 To use the program use run Frontier.exe 
-If you need to install it either use `$ git clone https://github.com/VisualDeVenture/Frontier` and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
+If you need to install it either use 
+`$ git clone https://github.com/VisualDeVenture/Frontier`
+ and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
 ### TO DO
 - [ ] Make an installer
