@@ -36,14 +36,14 @@ If you have an questions or issues I would love to help you. Email me at visualv
 
 
 ## Installation
-
-To use the program use run Frontier.exe 
+First launch install_requirements.bat
+after thatTo use the program use run Frontier.exe 
 If you need to install it either use 
 `$ git clone https://github.com/VisualDeVenture/Frontier`
  and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
 ### TO DO
-- [ ] Make an installer
+- [x] Make an installer
 - [ ] Make a functioning restore point system
 - [x] Make a compiled version
 - [x] Make a version checking feature
