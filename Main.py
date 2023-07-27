@@ -6,6 +6,7 @@ import os
 import sys
 import ctypes
 import shutil
+import requests
 from honesponsor import sponsor
 from softreboot import softreboot
 from restorepoint import display_menu, main_menu
@@ -19,6 +20,49 @@ from TimerResolution import timerr
 
 os.system("title Frontier - When your preformance falls, We rise.")
 maximize_command_prompt()
+
+def update(repo_url):
+    local_version_file = "version.txt"
+    repo_version_url = f"{repo_url}/raw/master/version.txt"
+
+    # Read the local version file
+    with open(local_version_file, "r") as f:
+        local_version = f.readline().strip()
+
+    # Fetch the version file from the GitHub repository
+    try:
+        response = requests.get(repo_version_url)
+        response.raise_for_status()  # Check for any request errors
+        repo_version = response.text.strip()
+    except requests.exceptions.RequestException as e:
+        print(crayons.red(f"Error fetching version file from GitHub: {e}"))
+        print("Resuming with the code...")
+        return
+
+    # Check if the remote version is higher than the local version
+    if repo_version > local_version:
+        # Download and update all files from the GitHub repository
+        try:
+            repo_url_raw = f"{repo_url}/raw/master/"
+            response = requests.get(repo_url_raw)
+            response.raise_for_status()
+
+            for filename in response.text.splitlines():
+                file_url = f"{repo_url_raw}{filename}"
+                response = requests.get(file_url)
+                response.raise_for_status()
+
+                with open(filename, "wb") as f:
+                    f.write(response.content)
+
+            print(crayons.green("Update successful."))
+        except requests.exceptions.RequestException as e:
+            print(crayons.red(f"Error downloading files from GitHub: {e}"))
+    else:
+        print(crayons.green("Local version is up to date."))
+    input("Press enter to continue...")
+
+
 
 def is_admin():
     try:
@@ -130,6 +174,7 @@ def secondpage():
         print("                         Its useless basically                                           Computer crashing? Use this option to try                             Sets your CPU Timer Rsolution")
         print("                         Might aswell uninstall it                                       and fix the corrupted stuff inside your C: drive                      to a custom value to boost the speed")
         print(f'\n \n')
+
         print()
         try:
             print(crayons.magenta("                                                                                          [99.] DISCORD   |    [10.] Page 1 [11.] Page 3"))
@@ -253,4 +298,8 @@ def firstlaunch():
     else:
         selectionmenu()
 
-check_admin()
+
+if __name__ == "__main__":
+    check_admin()
+    github_repo_url = "https://github.com/VisualDeVenture/Frontier"
+    update(github_repo_url)
