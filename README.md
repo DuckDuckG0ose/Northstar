@@ -3,6 +3,8 @@
 
 # Frontier
 
+<a href="https://www.buymeacoffee.com/visualventure" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
+
 When your performance fails you, we come in clutch. Coming with 20+ tweaks to boost your pc performance both inside and outside of games.
 
 

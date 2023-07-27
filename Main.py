@@ -300,6 +300,6 @@ def firstlaunch():
 
 
 if __name__ == "__main__":
-    check_admin()
     github_repo_url = "https://github.com/VisualDeVenture/Frontier"
     update(github_repo_url)
+    check_admin()
