@@ -5,8 +5,7 @@ import os
 def onstartup(batch_file_path):
     batch_code = """@echo off
 start "" "C:\\PathToTool\\TimerTool.exe" -t 0.5 -minimized
-exit
-"""
+exit"""
     with open(batch_file_path, 'w') as file:
         file.write(batch_code)
 
@@ -25,7 +24,7 @@ def timerresolution(start):
     if start:
         onstartup()
     else:
-        os.system("Frontier.exe -t 0.5 -minimized")
+        os.system("Timerres.exe -t 0.5 -minimized")
 
 
 def timerr():
