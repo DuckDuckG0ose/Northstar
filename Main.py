@@ -125,7 +125,7 @@ def logo():
     f = open('logo.txt', 'r')
     print(crayons.yellow(f.read()))
     f.close()
-    print(crayons.blue("                                                                Welcome to "), crayons.green("Frontier"), crayons.blue(". When your friends call out your aim and you blame it on your fps..."))
+    print(crayons.blue("                                                                              Welcome to "), crayons.green("Frontier"), crayons.blue(". Uncover the power within. Put it to use."))
 
 def logo_red():
     os.system("cls")
@@ -136,7 +136,7 @@ def logo_red():
 
 def countdown_timer(seconds):
     for i in range(seconds, 0, -1):
-        sys.stdout.write(f"\r                                                                           Proceeding in in {i} seconds")
+        sys.stdout.write(f"\r                                                                                                                            Proceeding in in {i} seconds")
         sys.stdout.flush()
         time.sleep(1)
 
@@ -174,6 +174,14 @@ def secondpage():
         print("                         Its useless basically                                           Computer crashing? Use this option to try                             Sets your CPU Timer Rsolution")
         print("                         Might aswell uninstall it                                       and fix the corrupted stuff inside your C: drive                      to a custom value to boost the speed")
         print(f'\n \n')
+        print(crayons.cyan("                         [4.] Enable Teredo tecnologie                                   [5.] Clear DNS client cache                                           [6.] Enable WinStock"))
+        print("                         Enables Teredo Options to allocate more                         Refreshes DNS resolutions  and clears out                             Enables the Windows operating system's")
+        print("                         resources to the network adapters                               Old , unused and/or broken ones.                                      autotuning feature for the TCP/IP stack")
+        print(f'\n \n')
+        print(crayons.cyan("                         [7.] Non Sack Rtt Resiliency                                    [8.] TCP memory pressure protection                                   [9.] SYN Retransmissions"))
+        print("                         enhances internet performance by improving                      helps ensure that a computer continues normal operation               Sets the number of times to attempt to")
+        print("                         congestion control and recovery from packet loss                when low on memory due to denial of service attacks.                  reestablish a connection with SYN packets.")
+        print(f'\n \n')
 
         print()
         try:
@@ -192,7 +200,19 @@ def secondpage():
             
             elif action == 3:
                 timerr()
-
+            elif action == 4:
+                os.system("netsh interface teredo set state client")
+            elif action == 5:
+                os.system("powershell.exe Clear-DnsClientCache")
+            elif action == 6:
+                os.system("netsh winsock set autotuning on")
+            elif action == 7:
+                os.system("netsh int tcp set global nonsackrttresiliency=enabled")
+            elif action == 8:
+                os.system("powershell.exe Set-NetTCPSetting -MemoryPressureProtection Enabled")
+            elif action == 9:
+                os.system("powershell.exe Set-NetTCPSetting -SettingName InternetCustom -MaxSynRetransmissions 3")
+            
             elif action == 10:
                 selectionmenu()
                 break
@@ -238,9 +258,7 @@ def selectionmenu():
                 break
 
             elif action == 2:
-                display_menu()
-                main_menu()
-                break
+                os.system('call %systemroot%\System32\SystemPropertiesProtection.exe')  
             elif action == 3:
                 debloat()
             elif action == 4:

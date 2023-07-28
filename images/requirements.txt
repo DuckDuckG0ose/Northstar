@@ -1,0 +1,4 @@
+crayons
+requests
+colorama
+psutil

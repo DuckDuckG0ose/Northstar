@@ -43,7 +43,6 @@ If you need to install it either use
  and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
 ### TO DO
-- [x] Make an installer
 - [ ] Make a functioning restore point system
 - [x] Make a compiled version
 - [x] Make a version checking feature
