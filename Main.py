@@ -3,6 +3,7 @@ import crayons
 import time
 from time import sleep
 import os
+import logging
 import sys
 import ctypes
 import shutil
@@ -102,8 +103,13 @@ with admin permissions. Thank you.
     input("Press enter to exit...")
 
 def uninstall_edge():
+    command = 'powershell.exe "(Get-AppxPackage Microsoft.MicrosoftEdge).Version"'
+    result = subprocess.run(command, capture_output=True, text=True, shell=True)
+
+    # Extract the version number from the output
+    msversion = result.stdout.strip()
     # Change the path to the Edge installer directory according to your system
-    edge_installer_path = r'%PROGRAMFILES(X86)%\Microsoft\Edge\Application\xxx\Installer'
+    edge_installer_path = fr'%PROGRAMFILES(X86)%\Microsoft\Edge\Application\{msversion}\Installer'
     cmd1 = f'cd "{edge_installer_path}"'
     cmd2 = 'setup.exe -uninstall -system-level -verbose-logging -force-uninstall'
 
@@ -164,6 +170,62 @@ def warningmenu():
     countdown_timer(9)
     selectionmenu()
 
+def thirdpage():
+    while True:
+        os.system("cls")
+        logo()
+#                                       .             /                                                 .                  /                                                  .                 /
+        print(f'\n \n')
+        print(crayons.cyan("                         [1.] Max SYN Retransmissions                                    [2.] Chimney PacketCoalescing                                         [3.] TCP Receive Window"))
+        print("                         Alters the registry in order to increase                        disables the Chimney Offload feature in the Windows                   disables TCP Receive Window Auto-Tuning")
+        print("                         The number of attempts to reestablish a connection              networking stack, which can boost internet performance                for the specified InternetCustom setting ")
+        print(f'\n \n')
+        print(crayons.cyan("                         [4.] Restrict Autotuning                                        [5.] Network direct memory acess                                           [6.] Set IPV4 IPV6 RSC for Adapters"))
+        print("                          sets the TCP Receive Window Auto-Tuning                        Doesn't work together with Chimney Offload                            Enables the Windows operating system's")
+        print("                         level to 'Restricted' in the Windows TCP/IP stack               but Chimney Offload is out since Windows 10.                          autotuning feature for the TCP/IP stack")
+        print(f'\n \n')
+        print(f'\n \n')
+
+        print()
+        try:
+            print(crayons.magenta("                                                                                                   [99.] DISCORD   |    [10.] Page 2 "))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
+
+            if action == 0:
+                print("Exiting...")
+                sys.exit()  # Exit the loop and end the program
+
+            elif action == 1:
+                os.system("powershell.exe Set-NetTCPSetting -SettingName InternetCustom -MaxSynRetransmissions 3")
+            
+            elif action == 2:
+                os.system("powershell.exe Set-NetOffloadGlobalSetting -Chimney Disabled")
+            
+            elif action == 3:
+                os.system("powershell.exe Set-NetTCPSetting -SettingName InternetCustom -ScalingHeuristics Disabled")
+            
+            elif action == 4:
+                os.system("netsh int tcp set global autotuninglevel=Restricted")
+            
+            elif action == 5:
+                os.system("netsh int tcp set global netdma=enabled")
+            elif action == 6:
+                os.system("powershell.exe Set-NetAdapterRsc -Name * -IncludeHidden -IPv4Enabled $True -IPv6Enabled $True")
+            
+            elif action == 10:
+                secondpage()
+                break
+            elif action == 99:
+                    discord_url = "https://discord.gg/GkhwF53JbF"
+                    os.system(f'start {discord_url}')
+            else:
+                print(crayons.red("Hmmm, seems like that action was invalid."))
+                countdown_timer(5)
+        except ValueError:
+            print(crayons.red("Please use numbers only."))
+            countdown_timer(4)
+
+
 def secondpage():
     while True:
         os.system("cls")
@@ -215,6 +277,9 @@ def secondpage():
             
             elif action == 10:
                 selectionmenu()
+                break
+            elif action == 11:
+                thirdpage()
                 break
             elif action == 99:
                     discord_url = "https://discord.gg/GkhwF53JbF"
@@ -317,7 +382,11 @@ def firstlaunch():
         selectionmenu()
 
 
-if __name__ == "__main__":
+try:
     github_repo_url = "https://github.com/VisualDeVenture/Frontier"
     update(github_repo_url)
     check_admin()
+except Exception as e:
+    print("An error occurred:")
+    print(e)
+    input("Press any key to continue...")

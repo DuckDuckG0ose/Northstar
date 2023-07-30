@@ -37,15 +37,17 @@ If you have an questions or issues I would love to help you. Email me at visualv
 
 ## Installation
 First launch install_requirements.bat
-after thatTo use the program use run Frontier.exe 
+To use the program use run Frontier.exe 
 If you need to install it either use 
 `$ git clone https://github.com/VisualDeVenture/Frontier`
  and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
 ### TO DO
-- [ ] Make a functioning restore point system
+All done friends! Any of your suggestions you can subimit at our [Discord server](https://discord.gg/GkhwF53JbF)
+- [x] Make a functioning restore point system
 - [x] Make a compiled version
 - [x] Make a version checking feature
 - [x] Add timer resolution
 
     
+With <3 Mr. VisualVenture

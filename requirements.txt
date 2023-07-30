@@ -1,8 +1,4 @@
-subprocess
 crayons
-ctypes
-shutil
 requests
-json
 colorama
 psutil
