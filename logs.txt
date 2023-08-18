@@ -1,0 +1,7 @@
+2023-08-18 13:18:38,593 - INFO - Changed the window title.
+2023-08-18 13:18:38,594 - INFO - Sucesfully started the script. Checking the version number...
+2023-08-18 13:18:38,595 - INFO - Starting version checking squence
+2023-08-18 13:18:39,245 - WARNING - Possible error while checking for version. Unsure.
+2023-08-18 13:18:39,246 - INFO - Latest version is being used.
+2023-08-18 13:18:39,246 - INFO - Ending version checking sequence.
+2023-08-18 13:18:51,117 - INFO - Tweak used: Boosted discord
