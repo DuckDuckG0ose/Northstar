@@ -7,6 +7,15 @@ import webbrowser
 import shutil
 import crayons
 
+def run_robloxtweaks_cmd():
+    try:
+        subprocess.run(["robloxtweak.cmd"], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        from Main import logger
+        print(f"An error occurred: {str(e)}")
+        logger.critical("UNABLE TO BOOST ROBLOX: ", e)
+
 def maximize_command_prompt():
     try:
         # Constants for Windows API functions and attributes
@@ -27,7 +36,9 @@ def maximize_command_prompt():
         # Set the position of the window to fill the screen (optional)
         user32.SetWindowPos(hwnd, HWND, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE)
     except Exception as e:
+        from Main import logger
         print(f"An error occurred: {str(e)}")
+        logger.critical("UNABLE TO RESIZE WINDOW: ", e)
 
 def boostdiscord():
     # Get the current username of the logged-in user
@@ -83,6 +94,8 @@ def spicetify():
         
     except subprocess.CalledProcessError as e:
         print(f"Error running PowerShell command: {e}")
+        from Main import logger
+        logger.critical("UNABLE TO ACCESS POWERSHELL: ", e)
     from Main import countdown_timer
     print(crayons.green("We spiced things up, to use spicetify open relaunch spotify. There will be a tab under your search button called Marketplace, we reccomend using the marketplace to install a plugin called 'adblock'. Thank you for using frontier."))
     countdown_timer(15)
@@ -97,6 +110,8 @@ def mssuninstall():
         
     except subprocess.CalledProcessError as e:
         print(f"Error running PowerShell command: {e}")
+        from Main import logger
+        logger.critical("UNABLE TO RUN POWERSHELL COMMAND: ", e)
         exit(1)
 
 
@@ -108,10 +123,16 @@ def defrag():
         print("Defragmentation completed successfully.")
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while running defrag: {e}")
+        from Main import logger
+        print(f"An error occurred: {str(e)}")
+        logger.error("Unable to defrag: ", e)
     except FileNotFoundError:
         print("The 'defrag' command was not found. Make sure you are running on a Windows OS.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+        from Main import logger
+        print(f"An error occurred: {str(e)}")
+        logger.critical("UNABLE TO ACCESS DEFRAGER: ", e)
 
 
 def get_edge_version():
@@ -127,6 +148,9 @@ def get_edge_version():
             return None
     except subprocess.CalledProcessError as e:
         print("Error:", e)
+        from Main import logger
+        print(f"An error occurred: {str(e)}")
+        logger.critical("ERROR: ", e)
         return None
 
 if __name__ == "__main__":

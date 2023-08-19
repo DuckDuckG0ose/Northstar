@@ -11,7 +11,7 @@ import shutil
 import requests
 from honesponsor import sponsor
 from softreboot import softreboot
-from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall
+from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd
 from modules import defrag
 import json
 from debloat import debloat
@@ -41,6 +41,7 @@ os.system("title Frontier - When your preformance falls, We rise.")
 maximize_command_prompt()
 logger = setup_logging()
 logger.info("Changed the window title.")
+lightmode = False
 
 def update(repo_url):
     local_version_file = "version.txt"
@@ -183,7 +184,6 @@ def countdown_timer(seconds):
 
 
 
-
 def warningmenu():
     os.system("cls")
     logo_red()
@@ -203,6 +203,80 @@ def warningmenu():
     countdown_timer(9)
     logger.info("This was users first launch. Take some stuff with a grain of salt.")
     selectionmenu()
+
+def selectmode():
+    lightmode = False
+    while True:
+
+        logo()                                       #                                                                                                                                     #
+        print(f'\n \n')
+        print(crayons.cyan("                         [1.] General Purpose Tweak Menu                                                                                                       [2.] Game Tweaks"))
+        print("                         Menu of all General Purpose Input/Output                                                                                              Game tweaks hand picked by the Frontier")
+        print("                         Tweaks made by the Frontier Devs                                                                                                      team to get you the most performance when gaming ")
+        print(f'\n \n')
+
+        try:
+            print(crayons.magenta("                                                                                       [99.] light mode enable/disable |    [10.] Discord "))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
+
+            if action == 0:
+                print("Exiting...")
+                break  # Exit the loop and end the program
+
+            elif action == 1:
+                selectionmenu()
+                logger.info("Selected GPTW")
+            elif action == 2:
+                gametweaks()
+
+            elif action == 99:
+                    if lightmode == False:
+                        os.system("color f0")
+                        lightmode = True
+                    elif lightmode == True:
+                        os.system("color 0f")
+            else:
+                print(crayons.red("Hmmm, seems like that action was invalid."))
+                countdown_timer(5)
+        except ValueError:
+            print(crayons.red("Please use numbers only."))
+            countdown_timer(4)
+
+def gametweaks():
+    lightmode = False
+    while True:
+
+        logo()                                       #                                                                                                                                     #
+        print(f'\n \n')
+        print(crayons.cyan("                         [1.] Roblox Tweaks                                                                                                       [2.] PLACEHOLDER"))
+        print("                         You must use this tweak every time roblox                                                                                             Placeholder")
+        print("                         Updates to keep using it.                                                                                                             Placeholder")
+        print(f'\n \n')
+
+        try:
+            print(crayons.magenta("                                                                                       [99.] back |    [10.] Discord "))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
+
+            if action == 0:
+                print("Exiting...")
+                break  # Exit the loop and end the program
+
+            elif action == 1:
+                run_robloxtweaks_cmd()
+                logger.info("Tweaked Roblox.")
+            elif action == 2:
+                print("Not enabled yet")
+
+            elif action == 99:
+                break
+            else:
+                print(crayons.red("Hmmm, seems like that action was invalid."))
+                countdown_timer(5)
+        except ValueError:
+            print(crayons.red("Please use numbers only."))
+            countdown_timer(4)
+
+
 
 def thirdpage():
     while True:
@@ -453,7 +527,9 @@ def firstlaunch():
         print("Updated 'first_launch' to False")
         warningmenu()
     else:
-        selectionmenu()
+        selectmode()
+
+
 
 try:
     # Create the log file if it doesn't exist
