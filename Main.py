@@ -19,6 +19,7 @@ from debloat import debloat
 from servicetweak import servicetweak
 from powerplan import powerplan
 from TimerResolution import timerr
+from fontchange import fontsize
 from pypresence import Presence
 
 def setup_logging(log_file='logs.txt'):
@@ -251,7 +252,7 @@ def selectmode():
         print(f'\n \n')
 
         try:
-            print(crayons.magenta("                                                                                       [99.] light mode enable/disable |    [10.] Discord "))
+            print(crayons.magenta("                                                                    [100.] Edit Screen size |    [99.] light mode enable/disable |    [10.] Discord "))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
@@ -263,6 +264,9 @@ def selectmode():
                 logger.info("Selected GPTW")
             elif action == 2:
                 gametweaks()
+
+            elif action == 100:
+                fontsize()
 
             elif action == 99:
                     if lightmode == False:
