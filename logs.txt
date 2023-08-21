@@ -1,11 +1,7 @@
-2023-08-19 15:30:47,346 - INFO - Changed the window title.
-2023-08-19 15:30:47,355 - INFO - Sucesfully started the script. Checking the version number...
-2023-08-19 15:30:47,356 - INFO - Starting version checking squence
-2023-08-19 15:30:47,827 - WARNING - Possible error while checking for version. Unsure.
-2023-08-19 15:30:47,829 - INFO - Latest version is being used.
-2023-08-19 15:30:47,829 - INFO - Ending version checking sequence.
-2023-08-19 15:30:54,055 - INFO - Tweaked Roblox.
-2023-08-19 15:30:56,210 - INFO - Tweaked Roblox.
-2023-08-19 15:30:57,981 - INFO - Tweaked Roblox.
-2023-08-19 15:31:00,374 - INFO - Tweaked Roblox.
-2023-08-19 15:31:02,381 - INFO - Tweaked Roblox.
+2023-08-21 16:12:57,364 - INFO - Changed the window title.
+2023-08-21 16:12:57,417 - INFO - Started rich presence.
+2023-08-21 16:12:57,418 - INFO - Sucesfully started the script. Checking the version number...
+2023-08-21 16:12:57,419 - INFO - Starting version checking squence
+2023-08-21 16:12:58,182 - WARNING - Possible error while checking for version. Unsure.
+2023-08-21 16:12:58,182 - INFO - Latest version is being used.
+2023-08-21 16:12:58,183 - INFO - Ending version checking sequence.

@@ -2,3 +2,4 @@ crayons
 requests
 colorama
 psutil
+pypresence

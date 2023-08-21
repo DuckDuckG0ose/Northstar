@@ -8,6 +8,7 @@ import logging
 import sys
 import ctypes
 import shutil
+import threading
 import requests
 from honesponsor import sponsor
 from softreboot import softreboot
@@ -18,6 +19,7 @@ from debloat import debloat
 from servicetweak import servicetweak
 from powerplan import powerplan
 from TimerResolution import timerr
+from pypresence import Presence
 
 def setup_logging(log_file='logs.txt'):
     # Create a logger
@@ -37,11 +39,44 @@ def setup_logging(log_file='logs.txt'):
 
     return logger
 
-os.system("title Frontier - When your preformance falls, We rise.")
+def update_rich_presence():
+    client_id = '1065733264842690570'
+    RPC = Presence(client_id)
+    RPC.connect()
+
+    details = "Uncover your PC's full potential"
+    state = "The best PC optimization tool out there"
+    start_time = time.time()
+
+    presence_data = {
+        "details": details,
+        "state": state,
+        "start": start_time,
+        "large_image": "https://i.imgur.com/dNwR4F6.png",
+        "small_image": "small_image_key",
+        "buttons": [{"label": "Github", "url": "https://github.com/VisualDeVenture/Frontier"},
+                    {"label": "Discord", "url": "https://discord.gg/GkhwF53JbF"}            
+                    ]
+    }
+
+    try:
+        while True:
+            RPC.update(**presence_data)
+            time.sleep(15)  # Update the presence every 15 seconds
+    except KeyboardInterrupt:
+        RPC.close()
+
+
+
+os.system("title Project Frontier - Uncover your PC's full potential.")
 maximize_command_prompt()
 logger = setup_logging()
 logger.info("Changed the window title.")
 lightmode = False
+presence_thread = threading.Thread(target=update_rich_presence)
+presence_thread.daemon = True
+presence_thread.start()
+logger.info("Started rich presence.")
 
 def update(repo_url):
     local_version_file = "version.txt"
