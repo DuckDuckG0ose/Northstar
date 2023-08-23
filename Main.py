@@ -21,7 +21,7 @@ from powerplan import powerplan
 from TimerResolution import timerr
 from fontchange import fontsize
 from pypresence import Presence
-
+from valorant import tweakval
 def setup_logging(log_file='logs.txt'):
     # Create a logger
     logger = logging.getLogger('file_logger')
@@ -287,9 +287,9 @@ def gametweaks():
 
         logo()                                       #                                                                                                                                     #
         print(f'\n \n')
-        print(crayons.cyan("                         [1.] Roblox Tweaks                                                                                                       [2.] PLACEHOLDER"))
-        print("                         You must use this tweak every time roblox                                                                                             Placeholder")
-        print("                         Updates to keep using it.                                                                                                             Placeholder")
+        print(crayons.cyan("                         [1.] Roblox Tweaks                                                                                                                    [2.] Valorant tweak"))
+        print("                         You must use this tweak every time roblox                                                                                             Boost your fps in Valorant using this tweak")
+        print("                         Updates to keep using it.                                                                                                             this tweak must be ran every update to have effects")
         print(f'\n \n')
 
         try:
@@ -569,16 +569,19 @@ def firstlaunch():
         selectmode()
 
 
-
-try:
-    # Create the log file if it doesn't exist
-    logger.info("Sucesfully started the script. Checking the version number...")
-    github_repo_url = "https://github.com/VisualDeVenture/Frontier"
-    update(github_repo_url)
-    check_admin()
+def main():
+    os.system("cls")
+    try:
+        # Create the log file if it doesn't exist
+        logger.info("Sucesfully started the script. Checking the version number...")
+        github_repo_url = "https://github.com/VisualDeVenture/Frontier"
+        update(github_repo_url)
+        check_admin()
     
-except Exception as e:
-    logger.critical(e)
-    print("An error occurred:")
-    print(e)
-    input("Press any key to continue...")
+    except Exception as e:
+        logger.critical(e)
+        print("An error occurred:")
+        print(e)
+        input("Press any key to continue...")
+
+main()

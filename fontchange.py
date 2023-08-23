@@ -31,4 +31,5 @@ def fontsize():
     font_size = int(input("Enter font size: "))
     set_cmd_font_size(font_size)
     print(f"Font size updated to {font_size}")
+    from Main import main
 
