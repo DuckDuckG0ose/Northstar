@@ -105,7 +105,7 @@ def update(repo_url):
     if repo_version > local_version:
         # Download and update all files from the GitHub repository
         try:
-            repo_url_raw = f"{repo_url}/raw/master/"
+            repo_url_raw = repo_url
             response = requests.get(repo_url_raw)
             response.raise_for_status()
             logger.info("")
