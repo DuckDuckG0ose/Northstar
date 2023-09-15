@@ -7,6 +7,7 @@
 
 When your performance fails you, we come in clutch. Coming with 20+ tweaks to boost your pc performance both inside and outside of games.
 
+<iframe src="https://discord.com/widget?id=1130249899385028669&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 ## WARNING
  I don't take responsibility for any damage done to your system.
