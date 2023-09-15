@@ -1,3 +1,4 @@
 {
-    "first_launch": true
+    "first_launch": true,
+    "terminalsize": 16
 }

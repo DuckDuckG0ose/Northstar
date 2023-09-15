@@ -6,10 +6,12 @@ from time import sleep
 import os
 import logging
 import sys
+import requests
+import io
+import zipfile
 import ctypes
 import shutil
 import threading
-import requests
 from honesponsor import sponsor
 from softreboot import softreboot
 from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd
@@ -49,12 +51,6 @@ def set_cmd_font_size(size):
     hndl = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
     ctypes.windll.kernel32.SetCurrentConsoleFontEx(hndl, ctypes.c_long(False), ctypes.pointer(font_info))
 
-def fontsize():
-    font_size = int(input("Enter font size: "))
-    set_cmd_font_size(font_size)
-    print(f"Font size updated to {font_size}")
-    selectmode()
-
 
 
 
@@ -76,6 +72,56 @@ def setup_logging(log_file='logs.txt'):
     logger.addHandler(file_handler)
 
     return logger
+
+
+
+def update_repository(repo_owner, repo_name):
+    api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest"
+
+    response = requests.get(api_url)
+    
+    if response.status_code != 200:
+        print("Failed to fetch latest release information.")
+        logger.critical("Failed to fetch latest release information.")
+        return
+
+    release_data = response.json()
+    latest_version = release_data.get("tag_name", "")
+
+    with open("version.txt", "r") as local_version_file:
+        local_version = local_version_file.read().strip()
+
+    if local_version >= latest_version:
+        print("The local version is up to date.")
+        logger.info("version up to date")
+        return
+
+    for asset in release_data.get("assets", []):
+        asset_url = asset.get("browser_download_url", "")
+        asset_name = asset.get("name", "")
+
+        if not asset_url:
+            print(f"Skipping asset: {asset_name}")
+            logger.error(f"Skipping asset: {asset_name}")
+            continue
+
+        asset_response = requests.get(asset_url)
+
+        if asset_response.status_code != 200:
+            print(f"Failed to download asset: {asset_name}")
+            logger.error(f"Skipping asset: {asset_name}")
+            continue
+
+        with zipfile.ZipFile(io.BytesIO(asset_response.content), "r") as zip_ref:
+            zip_ref.extractall()
+
+    with open("version.txt", "w") as local_version_file:
+        local_version_file.write(latest_version)
+
+    print("Updated to the latest version:", latest_version)
+
+
+
 
 def update_rich_presence():
     client_id = '1065733264842690570'
@@ -106,15 +152,10 @@ def update_rich_presence():
 
 
 
-os.system("title Project Frontier - Uncover your PC's full potential.")
-maximize_command_prompt()
+
 logger = setup_logging()
-logger.info("Changed the window title.")
-lightmode = False
-presence_thread = threading.Thread(target=update_rich_presence)
-presence_thread.daemon = True
-presence_thread.start()
-logger.info("Started rich presence.")
+
+
 
 def update(repo_url):
     local_version_file = "version.txt"
@@ -289,7 +330,7 @@ def selectmode():
         print(f'\n \n')
 
         try:
-            print(crayons.magenta("                                                                    [100.] Edit Screen size |    [99.] light mode enable/disable |    [10.] Discord "))
+            print(crayons.magenta("                                                                                        [99.] light mode enable/disable |    [10.] Discord "))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
@@ -301,12 +342,6 @@ def selectmode():
                 logger.info("Selected GPTW")
             elif action == 2:
                 gametweaks()
-
-            elif action == 100:
-                fontsize()
-                break
-                selectmode()
-
             elif action == 99:
                     if lightmode == False:
                         os.system("color f0")
@@ -608,19 +643,33 @@ def firstlaunch():
         selectmode()
 
 
-def main():
-    os.system("cls")
-    try:
-        # Create the log file if it doesn't exist
-        logger.info("Sucesfully started the script. Checking the version number...")
-        github_repo_url = "https://github.com/VisualDeVenture/Frontier"
-        update(github_repo_url)
-        check_admin()
-    
-    except Exception as e:
-        logger.critical(e)
-        print("An error occurred:")
-        print(e)
-        input("Press any key to continue...")
+with open('config.json', 'r') as file:
+        config_data = json.load(file)
 
-main()
+# Check the value of the first_launch key
+terminalsize = config_data.get('terminalsize', False)
+set_cmd_font_size(terminalsize)
+print(f"Font size updated to {terminalsize}")
+os.system("title Project Frontier - Uncover your PC's full potential.")
+maximize_command_prompt()
+logger.info("Changed the window title.")
+lightmode = False
+presence_thread = threading.Thread(target=update_rich_presence)
+presence_thread.daemon = True
+presence_thread.start()
+logger.info("Started rich presence.")
+selectmode()
+update_repository("VisualDeVenture", "Frontier")
+
+os.system("cls")
+try:
+    # Create the log file if it doesn't exist
+    logger.info("Sucesfully started the script. Checking the version number...")
+    check_admin()
+    
+except Exception as e:
+    logger.critical(e)
+    print("An error occurred:")
+    print(e)
+    input("Press any key to continue...")
+
