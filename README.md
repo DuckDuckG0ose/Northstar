@@ -5,13 +5,13 @@
 
 <a href="https://www.buymeacoffee.com/visualventure" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
 
-When your performance fails you, we come in clutch. Coming with 20+ tweaks to boost your pc performance both inside and outside of games.
-
-## WARNING
- I don't take responsibility for any damage done to your system.
+# When your performance fails you, we come in clutch. Coming with 40+ tweaks to boost your pc performance both inside and outside of games.
 
 
-![Image](images/frontier_banner.png)
+### I don't take responsibility for any damage done to your system.
+
+
+![Image](images/banner.png)
 
 
 ## Features
@@ -39,7 +39,7 @@ First launch install_requirements.bat
 To use the program use run Frontier.exe 
 If you need to install it either use 
 `$ git clone https://github.com/VisualDeVenture/Frontier`
- and then run Frontier.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
+ and then run Main.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
 ### TO DO
 All done friends! Any of your suggestions you can subimit at our [Discord server](https://discord.gg/GkhwF53JbF)
