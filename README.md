@@ -11,7 +11,7 @@ When your performance fails you, we come in clutch. Coming with 20+ tweaks to bo
  I don't take responsibility for any damage done to your system.
 
 
-![Image](images/Image1.png)
+![Image](images/frontier_banner.png)
 
 
 ## Features
