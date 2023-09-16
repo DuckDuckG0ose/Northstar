@@ -1,17 +1,21 @@
 
+
+
+<img src="https://discordapp.com/api/guilds/1130249899385028669/widget.png?style=banner3" alt="Discord Banner 3"/><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
+
 ![Logo](https://i.imgur.com/dNwR4F6.png)
 
 # Frontier
-
-<a href="https://www.buymeacoffee.com/visualventure" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
-
-# When your performance fails you, we come in clutch. Coming with 40+ tweaks to boost your pc performance both inside and outside of games.
+### When your performance fails you, we come in clutch. Coming with 40+ tweaks to boost your pc performance both inside and outside of games.
 
 
-### I don't take responsibility for any damage done to your system.
+
 
 
 ![Image](images/banner.png)
+
+
+
 
 
 ## Features
@@ -41,6 +45,15 @@ If you need to install it either use
 `$ git clone https://github.com/VisualDeVenture/Frontier`
  and then run Main.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
 
+# FAQ
+<details>
+<summary>Q: How do I know if Frontier is safe?</summary>
+<br>
+A: We keep our services clean. Where are the morals in stealing someones data?
+<img width="500" src="images/Tweet.png"><img width="500" src="images/Tweet1.png"><img width="500" src="images/Tweet2.png"> 
+</details>
+
+
 ### TO DO
 All done friends! Any of your suggestions you can subimit at our [Discord server](https://discord.gg/GkhwF53JbF)
 - [x] Make a functioning restore point system
@@ -49,4 +62,7 @@ All done friends! Any of your suggestions you can subimit at our [Discord server
 - [x] Add timer resolution
 
     
-With <3 Mr. VisualVenture
+With ❤ Mr. VisualVenture
+
+
+# ⚠ I don't take responsibility for any damage done to your system.

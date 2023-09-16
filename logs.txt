@@ -1,2 +1,2 @@
-2023-09-15 20:26:18,208 - INFO - Changed the window title.
-2023-09-15 20:26:18,210 - INFO - Started rich presence.
+2023-09-16 15:04:33,881 - INFO - Changed the window title.
+2023-09-16 15:04:33,885 - INFO - Started rich presence.
