@@ -50,7 +50,7 @@ If you need to install it either use
 <summary>Q: How do I know if Frontier is safe?</summary>
 <br>
 A: We keep our services clean. Where are the morals in stealing someones data?
-<img width="500" src="images/Tweet.png"><img width="500" src="images/Tweet1.png"><img width="500" src="images/Tweet2.png"> 
+<img width="500" src="images/Tweet.png"><img width="500" src="images/tweet1.png"><img width="500" src="images/tweet2.png"> 
 </details>
 
 
