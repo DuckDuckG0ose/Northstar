@@ -1,7 +1,7 @@
 
 
 
-<img src="https://discordapp.com/api/guilds/1130249899385028669/widget.png?style=banner3" alt="Discord Banner 3"/><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
+<a href="https://link-target.net/965133/peoject-frontier-support"><img src="https://discordapp.com/api/guilds/1130249899385028669/widget.png?style=banner3" alt="Discord Banner 3"/></a><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
 
 ![Logo](https://i.imgur.com/dNwR4F6.png)
 
