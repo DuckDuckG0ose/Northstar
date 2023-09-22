@@ -1,4 +1,5 @@
 import ctypes
+import re
 import subprocess
 import psutil
 import os
@@ -6,6 +7,19 @@ import time
 import webbrowser
 import shutil
 import crayons
+
+def windowssearch():
+    os.system('reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "CortanaEnabled" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d "1" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCloudSearch" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWeb" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchUseWebOverMeteredConnections" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableWebSearch" /t REG_DWORD /d "1" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortanaAboveLock" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\TermServicentVersion\Search" /v "AllowCortana" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d "0" /f')
 
 def run_robloxtweaks_cmd():
     try:
@@ -156,7 +170,10 @@ def get_edge_version():
 if __name__ == "__main__":
     edge_version = get_edge_version()
     if edge_version:
+        from Main import logger
         print(f"Microsoft Edge version: {edge_version}")
+        logger.info(f"Microsoft Edge version: {edge_version}")
+        
 
 
 def msedge():
@@ -165,3 +182,30 @@ def msedge():
     os.system(f"C:\Program Files (x86)\Microsoft\Edge\Application\{edge_version}\Installer")
     os.system("setup.exe –uninstall –system-level –verbose-logging –force-uninstall")
     print("We got rid of MS edge. Try searching for it.")
+
+def smrtscrdisable():
+    os.system('reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f')
+    os.system('reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f')
+    os.system('reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f')
+    os.system('reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /d "0" /f')
+
+
+def smartscreen():
+    from Main import countdown_timer
+    while True:
+        print(crayons.red(" BE AWARE. YOU ARE ABOUT TO DISABLE WINDOWS SMARTSCREEN! DISABLING IT MAKES ANY PROGRAM RAN WILL IMMEDIATELY GET THEM. YOU WILL NOT RECEIVE THE 'Windows protected your PC' POPUP WHEN RUNNING POSSIBLY MALICIOUS FILES."))
+        
+        try:
+            decision = input(crayons.blue("Use 1 [Yes] and 2 [No]"))
+            if decision == 1:
+                smrtscrdisable()
+
+            elif decision == 2:
+                print("As you wish.")
+                countdown_timer(4)
+                break
+        except ValueError:
+            print("Please use numbers only.")
+            countdown_timer(10)
+

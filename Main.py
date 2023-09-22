@@ -14,7 +14,7 @@ import shutil
 import threading
 from honesponsor import sponsor
 from softreboot import softreboot
-from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd
+from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd, windowssearch, smartscreen
 from modules import defrag
 import json
 from debloat import debloat
@@ -413,7 +413,7 @@ def thirdpage():
 
         print()
         try:
-            print(crayons.magenta("                                                                                                   [99.] DISCORD   |    [10.] Page 2 "))
+            print(crayons.magenta("                                                                                                   [99.] DISCORD   |    [10.] Page 2 [11.] Page 4"))
             action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
 
             if action == 0:
@@ -460,6 +460,9 @@ def thirdpage():
             elif action == 10:
                 secondpage()
                 break
+            elif action == 11:
+                fourthpage()
+                break
             elif action == 99:
                     discord_url = "https://discord.gg/GkhwF53JbF"
                     os.system(f'start {discord_url}')
@@ -470,6 +473,53 @@ def thirdpage():
         except ValueError:
             print(crayons.red("Please use numbers only."))
             countdown_timer(4)
+
+
+def fourthpage():
+    while True:
+        os.system("cls")
+        logo()
+#                                       .             /                                                 .                  /                                                  .                 /
+        print(f'\n \n')
+        print(crayons.cyan("                         [1.] Xbox DVR                                                  [2.] Better Windows Search                                             [3.] Disable smartscreen "))
+        print("                         Disable Xbox DVR in order to free up more RAM                   Updates the registy and System32 file in order", crayons.red("                       Not a smart decision but it imroves"))
+        print("                         and CPU power. (Not tested on Windows 11)                       To help Windows search bar fin items more easly", crayons.red("                      performance in game significantly "))
+        print(f'\n \n')
+        print()
+        try:
+            print(crayons.magenta("                                                                                                   [99.] DISCORD   |    [10.] Page 3 "))
+            action = int(input(crayons.green("                                                                                             What action would you like to perform: ")))
+
+            if action == 0:
+                print("Exiting...")
+                break  # Exit the loop and end the program
+
+            elif action == 1:
+                os.system('reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v "value" /t REG_SZ /d "0" /f')
+                logger.info("Tweak used: Disable Xbox DVR")
+            
+            elif action == 2:
+                windowssearch()
+                logger.info("Tweak used: Better Windows Search")
+
+            elif action == 3:
+                smartscreen()
+                logger.info("Tweak used: Smart Screen Disable")
+            
+            elif action == 10:
+                thirdpage()
+                break
+            elif action == 99:
+                    discord_url = "https://discord.gg/GkhwF53JbF"
+                    os.system(f'start {discord_url}')
+                    logger.info("User joined the Discord server.")
+            else:
+                print(crayons.red("Hmmm, seems like that action was invalid."))
+                countdown_timer(5)
+        except ValueError:
+            print(crayons.red("Please use numbers only."))
+            countdown_timer(4)
+
 
 
 def secondpage():
