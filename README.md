@@ -1,12 +1,14 @@
 
 
 
-<a href="https://link-target.net/965133/peoject-frontier-support"><img src="https://discordapp.com/api/guilds/1130249899385028669/widget.png?style=banner3" alt="Discord Banner 3"/></a><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
+
 
 ![Logo](https://i.imgur.com/dNwR4F6.png)
 
+<a href="https://link-target.net/965133/peoject-frontier-support"><img src="https://discordapp.com/api/guilds/1130249899385028669/widget.png?style=banner3" alt="Discord Banner 3"/></a><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Redbull" height="41" width="174"></a>
 # Frontier
-### When your performance fails you, we come in clutch. Coming with 40+ tweaks to boost your pc performance both inside and outside of games.
+## When your performance fails you, we come in clutch. Coming with 40+ tweaks to boost your pc performance both inside and outside of games.
+
 
 
 
@@ -32,18 +34,35 @@
 - Developed with love <3
 - There is more but im too lazy to edit the readme
 
+# Installation (Best part)
+
+- ## Compiled (.exe)
+    1. Click [here](https://github.com/VisualDeVenture/Frontier/releases/latest) to open the latest compiled release.
+    2. Download it and extract it.
+    3. Run "Main.exe" as an administrator
+    4. Enjoy your boosted performance
+
+- ## Raw code (.py/un-compiled)
+    ### NOTE: If you are just a normal user I strongly advise **AGAINST** using this 
+    1. Clone the repository or click [here](https://github.com/VisualDeVenture/Frontier/archive/refs/tags/frontier0.0.9.zip) or go to the Frontier Github page and download the raw code
+    
+        *Git clone command: `$ git clone https://github.com/VisualDeVenture/Frontier`*
+    2. Install the required packages and libraries for the code to work properly
+        
+        *You can achieve this either by using `$ pip install -r requirements.txt` or by running Install_Requirements.bat*
+    
+    3. Run Debug_Window.exe as administrator or open a new Command prompt and navigate to theFrontier folder.
+    
+        **If you used the Debug Window you can stop here.**
+    4. Use `$ Python main.py` (If the terminal crashes or displays any kind of error please make sure you are running your terminal as an administrator.)
+    5. Enjoy your new found performance!
 
 ## Support
 
 If you have an questions or issues I would love to help you. Email me at visualventuredev@proton.me or join my [Discord](https://discord.gg/GkhwF53JbF).
 
 
-## Installation
-First launch install_requirements.bat
-To use the program use run Frontier.exe 
-If you need to install it either use 
-`$ git clone https://github.com/VisualDeVenture/Frontier`
- and then run Main.exe or use the installer contained in [Github Releases](https://github.com/VisualDeVenture/Frontier/releases)
+
 
 # FAQ
 <details>
@@ -55,7 +74,7 @@ A: We keep our services clean. Where are the morals in stealing someones data?
 
 
 ### TO DO
-All done friends! Any of your suggestions you can subimit at our [Discord server](https://discord.gg/GkhwF53JbF)
+All done friends! Any of your suggestions you can submit at our [Discord server](https://discord.gg/GkhwF53JbF)
 - [x] Make a functioning restore point system
 - [x] Make a compiled version
 - [x] Make a version checking feature
@@ -66,3 +85,4 @@ With ❤ Mr. VisualVenture
 
 
 # ⚠ I don't take responsibility for any damage done to your system.
+### Warning ⚠: This project is protected under a [Mozilla Public License Version 2.0](https://choosealicense.com/licenses/mpl-2.0/#) . If you are going to  use this project somewhere feel free to hit me up on Discord. I would love to see your project. <3
