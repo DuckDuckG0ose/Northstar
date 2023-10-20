@@ -111,7 +111,7 @@ def spicetify():
         from Main import logger
         logger.critical("UNABLE TO ACCESS POWERSHELL: ", e)
     from Main import countdown_timer
-    print(crayons.green("We spiced things up, to use spicetify open relaunch spotify. There will be a tab under your search button called Marketplace, we reccomend using the marketplace to install a plugin called 'adblock'. Thank you for using frontier."))
+    print(crayons.green("We spiced things up, to use spicetify open relaunch spotify. There will be a tab under your search button called Marketplace, we reccomend using the marketplace to install a plugin called 'adblock'. Thank you for using Northstar."))
     countdown_timer(15)
     exit(1)
 

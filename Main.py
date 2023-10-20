@@ -12,8 +12,8 @@ import zipfile
 import ctypes
 import shutil
 import threading
-from honesponsor import sponsor
 from softreboot import softreboot
+from minecraft import minecraft_tweak
 from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd, windowssearch, smartscreen
 from modules import defrag
 import json
@@ -138,7 +138,7 @@ def update_rich_presence():
         "start": start_time,
         "large_image": "https://i.imgur.com/dNwR4F6.png",
         "small_image": "small_image_key",
-        "buttons": [{"label": "Github", "url": "https://github.com/VisualDeVenture/Frontier"},
+        "buttons": [{"label": "Github", "url": "https://github.com/VisualDeVenture/Northstar"},
                     {"label": "Discord", "url": "https://discord.gg/GkhwF53JbF"}            
                     ]
     }
@@ -160,7 +160,7 @@ logger = setup_logging()
 def update(repo_url):
     local_version_file = "version.txt"
     repo_version_url = f"{repo_url}/raw/master/version.txt"
-    logger.info("Starting version checking squence")
+    logger.info("Starting version checking sequence")
 
     # Read the local version file
     with open(local_version_file, "r") as f:
@@ -243,7 +243,7 @@ Hey there! We are sorry, but you are not running the script with admin permissio
 We truly don't want to brick your pc. That's why we are asking you to relaunch the script
 with admin permissions. Thank you.
 '''))
-    logger.critical("YOU ARE MISSING ADMIN PERMISSIONS. THIS IS NOT AN ERROR. DO NOT REPORT THIS TO FRONTIER DEVS.")
+    logger.critical("YOU ARE MISSING ADMIN PERMISSIONS. THIS IS NOT AN ERROR. DO NOT REPORT THIS TO NORTHSTAR DEVS.")
     input("Press enter to exit...")
 
 def uninstall_edge():
@@ -278,7 +278,7 @@ def logo():
     f = open('logo.txt', 'r')
     print(crayons.yellow(f.read()))
     f.close()
-    print(crayons.blue("                                                                              Welcome to "), crayons.green("Frontier"), crayons.blue(". Uncover the power within. Put it to use."))
+    print(crayons.blue("                                                                              Welcome to "), crayons.green("NORTHSTAR"), crayons.blue(". Uncover the power within. Put it to use."))
 
 def logo_red():
     os.system("cls")
@@ -312,7 +312,7 @@ def warningmenu():
 
 
     WE ARE NOT RESPONSIABLE FOR ANY DAMAGES DONE TO YOUR MACHINE. WE STRONGLY SUGGEST ON MAKING A RESTORE POINT.
-    FRONTIER IS STILL NOT PERFECT AND WE DONT HAVE A AUTOMATIC RESTORE POINT SYSTEM IN PLACE. \n THIS PROGRAM CANT KNOW IF ITS BEING RUN AS AN ADMIN OR NOT. IF YOU ARE NOT RUNNING IT AS AN AMIN IT MAY HAVE A CHANCE OF BRICKING YOUR SYSTEM.
+    NORTHSTAR IS STILL NOT PERFECT AND WE DONT HAVE A AUTOMATIC RESTORE POINT SYSTEM IN PLACE. \n THIS PROGRAM CANT KNOW IF ITS BEING RUN AS AN ADMIN OR NOT. IF YOU ARE NOT RUNNING IT AS AN AMIN IT MAY HAVE A CHANCE OF BRICKING YOUR SYSTEM.
     """))
     countdown_timer(9)
     logger.info("This was users first launch. Take some stuff with a grain of salt.")
@@ -325,8 +325,8 @@ def selectmode():
         logo()                                       #                                                                                                                                     #
         print(f'\n \n')
         print(crayons.cyan("                         [1.] General Purpose Tweak Menu                                                                                                       [2.] Game Tweaks"))
-        print("                         Menu of all General Purpose Input/Output                                                                                              Game tweaks hand picked by the Frontier")
-        print("                         Tweaks made by the Frontier Devs                                                                                                      team to get you the most performance when gaming ")
+        print("                         Menu of all General Purpose Input/Output                                                                                              Game tweaks hand picked by the Northstar")
+        print("                         Tweaks made by the Northstar Devs                                                                                                      team to get you the most performance when gaming ")
         print(f'\n \n')
 
         try:
@@ -365,6 +365,9 @@ def gametweaks():
         print("                         You must use this tweak every time roblox                                                                                             Boost your fps in Valorant using this tweak")
         print("                         Updates to keep using it.                                                                                                             this tweak must be ran every update to have effects")
         print(f'\n \n')
+        print(crayons.cyan("                         [3.] Minecraft Tweak                                                      "))
+        print("                         Edits Minecraft's configuration to give you                                             ")
+        print("                         The most stable and smooth experience in Minecraft                                       ")
 
         try:
             print(crayons.magenta("                                                                                       [99.] back |    [10.] Discord "))
@@ -378,8 +381,9 @@ def gametweaks():
                 run_robloxtweaks_cmd()
                 logger.info("Tweaked Roblox.")
             elif action == 2:
-                print("Not enabled yet")
-
+                tweakval()
+            elif action == 3:
+                minecraft_tweak()
             elif action == 99:
                 break
             else:
@@ -482,8 +486,8 @@ def fourthpage():
 #                                       .             /                                                 .                  /                                                  .                 /
         print(f'\n \n')
         print(crayons.cyan("                         [1.] Xbox DVR                                                  [2.] Better Windows Search                                             [3.] Disable smartscreen "))
-        print("                         Disable Xbox DVR in order to free up more RAM                   Updates the registy and System32 file in order", crayons.red("                       Not a smart decision but it imroves"))
-        print("                         and CPU power. (Not tested on Windows 11)                       To help Windows search bar fin items more easly", crayons.red("                      performance in game significantly "))
+        print("                         Disable Xbox DVR in order to free up more RAM                   Updates the registry and System32 file in order", crayons.red("                       Not a smart decision but it improvers"))
+        print("                         and CPU power. (Not tested on Windows 11)                       To help Windows search bar fin items more easily", crayons.red("                      performance in game significantly "))
         print(f'\n \n')
         print()
         try:
@@ -700,7 +704,7 @@ with open('config.json', 'r') as file:
 terminalsize = config_data.get('terminalsize', False)
 set_cmd_font_size(terminalsize)
 print(f"Font size updated to {terminalsize}")
-os.system("title Project Frontier - Uncover your PC's full potential.")
+os.system("title Northstar - Uncover your PC's full potential.")
 maximize_command_prompt()
 logger.info("Changed the window title.")
 lightmode = False
@@ -709,7 +713,7 @@ presence_thread.daemon = True
 presence_thread.start()
 logger.info("Started rich presence.")
 selectmode()
-update_repository("VisualDeVenture", "Frontier")
+update_repository("VisualDeVenture", "Northstar")
 
 os.system("cls")
 try:

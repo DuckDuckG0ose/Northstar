@@ -19,4 +19,4 @@ def debloat():
         os.remove('debloat_script.bat')
     else:
         print(f"I couldnt debloat your pc. Something must be wrong.")
-    input("Thank you for choosing Frontier. Press any key to continue...")
+    input("Thank you for choosing Northstar. Press any key to continue...")
