@@ -17,6 +17,7 @@ from minecraft import minecraft_tweak
 from modules import maximize_command_prompt, boostdiscord, webbrowser, iprenew, spicetify, mssuninstall, run_robloxtweaks_cmd, windowssearch, smartscreen
 from modules import defrag
 import json
+from apex import apextweaks
 from debloat import debloat
 from servicetweak import servicetweak
 from powerplan import powerplan
@@ -384,6 +385,8 @@ def gametweaks():
                 tweakval()
             elif action == 3:
                 minecraft_tweak()
+            elif action == 4:
+                apextweaks()
             elif action == 99:
                 break
             else:
