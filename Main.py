@@ -365,9 +365,9 @@ def gametweaks():
         print("                         You must use this tweak every time roblox                                                                                             Boost your fps in Valorant using this tweak")
         print("                         Updates to keep using it.                                                                                                             this tweak must be ran every update to have effects")
         print(f'\n \n')
-        print(crayons.cyan("                         [3.] Minecraft Tweak                                                      "))
-        print("                         Edits Minecraft's configuration to give you                                             ")
-        print("                         The most stable and smooth experience in Minecraft                                       ")
+        print(crayons.cyan("                         [3.] Minecraft Tweak                                                                                                                  [4.] Apex Legends Tweak"))
+        print("                         Edits Minecraft's configuration to give you                                                                                           Boosts your FPS in Apex Legends by lowering file config")
+        print("                         The most stable and smooth experience in Minecraft                                                                                    settings (Not that in game quality will be affected)")
 
         try:
             print(crayons.magenta("                                                                                       [99.] back |    [10.] Discord "))
